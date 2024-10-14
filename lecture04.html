@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Lecture 4 - Jet images and transfer learning with CNNs &#8212; Deep Learning for Particle Physicists</title>
+    <title>Exercise 2 - Jet images and transfer learning with CNNs &#8212; Deep Learning for Particle Physicists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 5 - Convolutional neural networks" href="lecture05.html" />
-    <link rel="prev" title="Lecture 3 - Neural network deep dive" href="lecture03.html" />
+    <link rel="next" title="Exercise 1 - Jet tagging with neural networks" href="lecture01.html" />
+    <link rel="prev" title="Exercise 3 - Generating hep-ph titles with Transformers" href="lecture06.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,10 +118,10 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="lecture01.html">
-   Lecture 1 - Jet tagging with neural networks
+   Exercise 1 - Jet tagging with neural networks
   </a>
  </li>
- <li class="toctree-l1">
+ <!-- <li class="toctree-l1">
   <a class="reference internal" href="lecture02.html">
    Lecture 2 - Gradient descent
   </a>
@@ -130,20 +130,20 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="lecture03.html">
    Lecture 3 - Neural network deep dive
   </a>
- </li>
+ </li> -->
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 4 - Jet images and transfer learning with CNNs
+   Exercise 2 - Jet images and transfer learning with CNNs
   </a>
  </li>
- <li class="toctree-l1">
+ <!-- <li class="toctree-l1">
   <a class="reference internal" href="lecture05.html">
    Lecture 5 - Convolutional neural networks
   </a>
- </li>
+ </li> -->
  <li class="toctree-l1">
   <a class="reference internal" href="lecture06.html">
-   Lecture 6 - Generating hep-ph titles with Transformers
+   Exercise 3 - Generating hep-ph titles with Transformers
   </a>
  </li>
 </ul>
@@ -205,7 +205,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/lewtun/dl4phys/blob/gh-pages/lecture04.ipynb"
+        <a href="https://colab.research.google.com/github/lewtun/dl4phys/blob/main/lecture04.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -371,7 +371,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 4 - Jet images and transfer learning with CNNs</h1>
+                <h1>Exercise 2 - Jet images and transfer learning with CNNs</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -434,7 +434,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-4-jet-images-and-transfer-learning-with-cnns">
-<h1>Lecture 4 - Jet images and transfer learning with CNNs<a class="headerlink" href="#lecture-4-jet-images-and-transfer-learning-with-cnns" title="Permalink to this headline">#</a></h1>
+<h1>Exercise 2 - Jet images and transfer learning with CNNs<a class="headerlink" href="#lecture-4-jet-images-and-transfer-learning-with-cnns" title="Permalink to this headline">#</a></h1>
 <blockquote>
 <div><p>A look at converting jets into images and classifying them with convolutional neural networks</p>
 </div></blockquote>
@@ -502,11 +502,11 @@ title="Print to PDF"
 </section>
 <section id="creating-jet-images">
 <h2>Creating jet images<a class="headerlink" href="#creating-jet-images" title="Permalink to this headline">#</a></h2>
-<p>As we saw in lectures 1 and 2, there are various ways to represent jet data for neural networks. So far, we’ve focused on <span class="math notranslate nohighlight">\(N\)</span>-subjettiness features <span class="math notranslate nohighlight">\(\tau_N^{\beta}\)</span>, which represent jets in a <em>tabular</em> format. Today, we’ll examine another popular representation that treats <em>jets as 2D images</em>. An example from the top tagging review is shown below:</p>
+<p>As we saw the exercise 1, there are various ways to represent jet data for neural networks. So far, we’ve focused on <span class="math notranslate nohighlight">\(N\)</span>-subjettiness features <span class="math notranslate nohighlight">\(\tau_N^{\beta}\)</span>, which represent jets in a <em>tabular</em> format. Today, we’ll examine another popular representation that treats <em>jets as 2D images</em>. An example from the top tagging review is shown below:</p>
 <center>
     <img alt="jet-images" caption="Jet images" src="_images/jet-images.png" id="jet-images" width=800/>
-</center><p>But why consider images in the first place? The motivation here is partly historical: computer vision is where the deep learning revolution started in 2011, with <a class="reference external" href="https://people.idsia.ch/~juergen/DanNet-triggers-deep-CNN-revolution-2011.html">DanNet</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/AlexNet">AlexNet</a> smashing the state-of-the-art on popular benchmarks. Both approaches were based on a type of architecture called a <a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network"><em>convolutional neural network</em></a> (CNN), which is especially well suited for analysing images. In the next lecture we’ll examine how CNNs work in detail, so today we’ll focus on creating jet images and training a CNN with the high-level API of fastai.</p>
-<p>To get started, let’s take a look at how we can construct images from the 4-vectors associated with the consituents in a jet. We’ll use the raw events from the <a class="reference external" href="https://huggingface.co/datasets/dl4phys/top_tagging"><em>Top Quark Tagging</em> dataset</a> in lecture 1, so let’s download it and grab a sample of 10,000 events to play with:</p>
+</center><p>But why consider images in the first place? The motivation here is partly historical: computer vision is where the deep learning revolution started in 2011, with <a class="reference external" href="https://people.idsia.ch/~juergen/DanNet-triggers-deep-CNN-revolution-2011.html">DanNet</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/AlexNet">AlexNet</a> smashing the state-of-the-art on popular benchmarks. Both approaches were based on a type of architecture called a <a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network"><em>convolutional neural network</em></a> (CNN), which is especially well suited for analysing images. </p>
+<p>To get started, let’s take a look at how we can construct images from the 4-vectors associated with the consituents in a jet. We’ll use the raw events from the <a class="reference external" href="https://huggingface.co/datasets/dl4phys/top_tagging"><em>Top Quark Tagging</em> dataset</a> in exercise 1, so let’s download it and grab a sample of 10,000 events to play with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_events</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;dl4phys/top_tagging&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;validation&quot;</span><span class="p">)</span>
@@ -954,7 +954,7 @@ title="Print to PDF"
 <p>This process of reusing the weights to solve a different task is called <em>transfer learning</em>, and now underpins much of the success that deep learning has achieved in computer vision, natural language processing, and audio. A cartoon of the process is shown below:</p>
 <center>
     <img alt="transfer" caption="Transfer learning" src="_images/transfer-learning.png" id="transfer-learning" width=800/>
-</center><p>Anyway, enough jargon - let’s train a model! As we did in lecture 1, we’ll use the high-level API of fastai, which provides factory methods for various domains. Instead of a <code class="docutils literal notranslate"><span class="pre">tabular_learner()</span></code> we’ll use the <code class="docutils literal notranslate"><span class="pre">vision_learner()</span></code>, which is designed for computer vision tasks:</p>
+</center><p>Anyway, enough jargon - let’s train a model! As we did in the exercise 1, we’ll use the high-level API of fastai, which provides factory methods for various domains. Instead of a <code class="docutils literal notranslate"><span class="pre">tabular_learner()</span></code> we’ll use the <code class="docutils literal notranslate"><span class="pre">vision_learner()</span></code>, which is designed for computer vision tasks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">learn</span> <span class="o">=</span> <span class="n">vision_learner</span><span class="p">(</span>
@@ -978,7 +978,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Now that our model is on the GPU, we can follow the same steps we’ve done in previous lectures. First we find a good learning rate:</p>
+<p>Now that our model is on the GPU, we can follow the same steps we’ve done in previous exercise. First we find a good learning rate:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">learn</span><span class="o">.</span><span class="n">lr_find</span><span class="p">()</span>
@@ -1013,7 +1013,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Note that this time we didn’t call <code class="docutils literal notranslate"><span class="pre">fit()</span></code> or <code class="docutils literal notranslate"><span class="pre">fit_one_cycle()</span></code> as we’ve done in previous lectures. That’s because we’re starting with a pretrained model whose weights we “fine-tuned” to the new dataset of jet images. This process involves some tricks which is why it is called <code class="docutils literal notranslate"><span class="pre">fine_tune()</span></code>. Anyway, we’ve now got a model that scores pretty well on the validation set. Let’s compute the same metrics we did in lecture 1, but now on the test set:</p>
+<p>Note that this time we didn’t call <code class="docutils literal notranslate"><span class="pre">fit()</span></code> or <code class="docutils literal notranslate"><span class="pre">fit_one_cycle()</span></code> as we’ve done in previous exercise. That’s because we’re starting with a pretrained model whose weights we “fine-tuned” to the new dataset of jet images. This process involves some tricks which is why it is called <code class="docutils literal notranslate"><span class="pre">fine_tune()</span></code>. Anyway, we’ve now got a model that scores pretty well on the validation set. Let’s compute the same metrics we did in exercise 1, but now on the test set:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_metrics</span><span class="p">(</span><span class="n">learn</span><span class="p">,</span> <span class="n">test_ds</span><span class="p">):</span>
@@ -1080,13 +1080,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture 3 - Neural network deep dive</p>
+            <p class="prev-next-title">Exercise 1 - Jet tagging with neural networks</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lecture05.html" title="next page">
+    <a class='right-next' id="next-link" href="lecture06.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 5 - Convolutional neural networks</p>
+        <p class="prev-next-title">Exercise 3 - Generating hep-ph titles with Transformers</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

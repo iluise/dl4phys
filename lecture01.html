@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Lecture 1 - Jet tagging with neural networks &#8212; Deep Learning for Particle Physicists</title>
+    <title>Exercise 1 - Jet tagging with neural networks &#8212; Deep Learning for Particle Physicists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 2 - Gradient descent" href="lecture02.html" />
+    <link rel="next" title="Exercise 2 - Jet images and transfer learning with CNNs" href="lecture04.html" />
     <link rel="prev" title="Deep Learning for Particle Physicists" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -118,10 +118,10 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lecture 1 - Jet tagging with neural networks
+   Exercise 1 - Jet tagging with neural networks
   </a>
  </li>
- <li class="toctree-l1">
+ <!-- <li class="toctree-l1">
   <a class="reference internal" href="lecture02.html">
    Lecture 2 - Gradient descent
   </a>
@@ -130,20 +130,20 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="lecture03.html">
    Lecture 3 - Neural network deep dive
   </a>
- </li>
+ </li> -->
  <li class="toctree-l1">
   <a class="reference internal" href="lecture04.html">
-   Lecture 4 - Jet images and transfer learning with CNNs
+   Exercise 2 - Jet images and transfer learning with CNNs
   </a>
  </li>
- <li class="toctree-l1">
+ <!-- <li class="toctree-l1">
   <a class="reference internal" href="lecture05.html">
    Lecture 5 - Convolutional neural networks
   </a>
- </li>
+ </li> -->
  <li class="toctree-l1">
   <a class="reference internal" href="lecture06.html">
-   Lecture 6 - Generating hep-ph titles with Transformers
+   Exercise 3 - Generating hep-ph titles with Transformers
   </a>
  </li>
 </ul>
@@ -205,7 +205,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://colab.research.google.com/github/lewtun/dl4phys/blob/gh-pages/lecture01.ipynb"
+        <a href="https://colab.research.google.com/github/lewtun/dl4phys/blob/main/lecture01.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -417,7 +417,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture 1 - Jet tagging with neural networks</h1>
+                <h1>Exercise 1 - Jet tagging with neural networks</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -526,7 +526,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-jet-tagging-with-neural-networks">
-<h1>Lecture 1 - Jet tagging with neural networks<a class="headerlink" href="#lecture-1-jet-tagging-with-neural-networks" title="Permalink to this headline">#</a></h1>
+<h1>Exercise 1 - Jet tagging with neural networks<a class="headerlink" href="#lecture-1-jet-tagging-with-neural-networks" title="Permalink to this headline">#</a></h1>
 <blockquote>
 <div><p>A first look at training deep neural networks to classify jets in proton-proton collisions.</p>
 </div></blockquote>
@@ -19729,7 +19729,7 @@ Backround rejection at signal efficiency 0.3: 373.915
 </section>
 <section id="saving-and-sharing-the-model">
 <h2>Saving and sharing the model<a class="headerlink" href="#saving-and-sharing-the-model" title="Permalink to this headline">#</a></h2>
-<p>We’ve seen in this lecture how to load and prepare datasets for deep neural nets, and how to train the models with fastai. But what happens if you want to save your model for future use, or to simply reproduce the results from your paper in PRL 🙃?</p>
+<p>We’ve seen in this exercise how to load and prepare datasets for deep neural nets, and how to train the models with fastai. But what happens if you want to save your model for future use, or to simply reproduce the results from your paper in PRL 🙃?</p>
 <p>One way to do this is by use the <code class="docutils literal notranslate"><span class="pre">save()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Learner</span></code>, which will store your model in a format called <a class="reference external" href="https://docs.python.org/3/library/pickle.html">pickle</a>. This is great if you’re doing quick experimentation, but at some point you might want to share the model with a colleague or the wider research community.</p>
 <p>In the same way we were able to download a dataset from the Hugging Face Hub, it is also possible to share fastai models on the platform! To do so, you’ll first need to:</p>
 <ul class="simple">
@@ -19839,10 +19839,10 @@ Backround rejection at signal efficiency 0.3: 373.915
             <p class="prev-next-title">Deep Learning for Particle Physicists</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lecture02.html" title="next page">
+    <a class='right-next' id="next-link" href="lecture04.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 2 - Gradient descent</p>
+        <p class="prev-next-title">Exercise 2 - Jet images and transfer learning with CNNs</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
